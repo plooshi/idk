@@ -6,4 +6,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup ssh session
-      uses: plooshi/action-upterm@patch-1
+      uses: plooshi/action-upterm@main
