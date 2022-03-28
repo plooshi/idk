@@ -14,11 +14,11 @@ jobs:
       - name: get sdk
         run: curl.exe -o sdk.exe https://download.microsoft.com/download/d/8/f/d8ff148b-450c-40b3-aeed-2a3944e66bbd/windowssdk/winsdksetup.exe
       - name: setup sdk
-        run: sdk.exe -q -params:ADDLOCAL=ALL
+        run: .\sdk.exe -q -params:ADDLOCAL=ALL
       - name: get vs
         run: curl -o vs.exe https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030
       - name: setup vs
-        run: vs.exe --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.VC.ATLMFC --includeRecommended
+        run: .\vs.exe --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.VC.ATLMFC --includeRecommended
       - name: get depot tools
         run: git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git %userprofile%\depot
       - name: update path
