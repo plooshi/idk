@@ -15,10 +15,8 @@ jobs:
         run: curl.exe -o sdk.exe https://download.microsoft.com/download/d/8/f/d8ff148b-450c-40b3-aeed-2a3944e66bbd/windowssdk/winsdksetup.exe
       - name: setup sdk
         run: .\sdk.exe /quiet
-      - name: get vs
-        run: curl -o vs.exe https://download.visualstudio.microsoft.com/download/pr/73f91fcb-aa18-4bec-8c2f-8270acb22398/6f18bc2ecbcdc5266c8644db84afc5126331f3834a601ed350d3a6f6c00a5d2f/vs_Community.exe
-      - name: setup vs
-        run: .\vs.exe -q --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.VC.ATLMFC --includeRecommended
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.0.2
       - name: get depot tools
         run: git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git depot
       - name: depot export dir
