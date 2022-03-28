@@ -1,0 +1,57 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name: chr sdk
+    runs-on: windows-latest
+    steps:
+      - name: get sdk
+        run: curl.exe -o sdk.exe https://download.microsoft.com/download/d/8/f/d8ff148b-450c-40b3-aeed-2a3944e66bbd/windowssdk/winsdksetup.exe
+      - name: setup sdk
+        run: sdk.exe -q -params:ADDLOCAL=ALL
+      - name: get vs
+        run: curl -o vs.exe https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030
+      - name: setup vs
+        run: vs.exe --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.VC.ATLMFC --includeRecommended
+      - name: get depot tools
+        run: git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git %userprofile%\depot
+      - name: update path
+        run: set PATH=%PATH%;%userprofile%\depot
+      - name: depot export dir
+        run: cd %userprofile%\depot
+      - name:
+        run: python package_from_installed.py 2022 -w 10.0.22000.0
+ 
+  
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
