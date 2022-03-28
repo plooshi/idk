@@ -16,7 +16,7 @@ jobs:
       - name: setup sdk
         run: .\sdk.exe /quiet
       - name: get vs
-        run: curl -o vs.exe https://download.visualstudio.microsoft.com/download/pr/c308d1c8-6b87-4859-9de6-c09a446c10ea/40f74ffb9fdcdfe922f51901a9aebdfdc9bda1afb3bf780f04216a40690fc3f8/vs_Community.exe
+        run: curl -o vs.exe https://download.visualstudio.microsoft.com/download/pr/73f91fcb-aa18-4bec-8c2f-8270acb22398/6f18bc2ecbcdc5266c8644db84afc5126331f3834a601ed350d3a6f6c00a5d2f/vs_Community.exe
       - name: setup vs
         run: .\vs.exe -q --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.VC.ATLMFC --includeRecommended
       - name: get depot tools
@@ -24,4 +24,4 @@ jobs:
       - name: depot export dir
         run: cd depot
       - name: export 
-        run: python depot/win_toolchain/package_from_installed.py 2022 -w 10.0.22000.0
+        run: python depot/win_toolchain/package_from_installed.py 2019 -w 10.0.22000.0
