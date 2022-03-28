@@ -24,4 +24,4 @@ jobs:
       - name: depot export dir
         run: cd depot
       - name: export 
-        run: python package_from_installed.py 2022 -w 10.0.22000.0
+        run: python depot/win_toolchain/package_from_installed.py 2022 -w 10.0.22000.0
