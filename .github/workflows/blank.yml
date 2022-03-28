@@ -16,7 +16,7 @@ jobs:
       - name: setup sdk
         run: .\sdk.exe /quiet
       - name: get vs
-        run: curl -o vs.exe https://aka.ms/vs/17/release/vs_community.exe
+        run: curl -o vs.exe https://download.visualstudio.microsoft.com/download/pr/c308d1c8-6b87-4859-9de6-c09a446c10ea/40f74ffb9fdcdfe922f51901a9aebdfdc9bda1afb3bf780f04216a40690fc3f8/vs_Community.exe
       - name: setup vs
         run: .\vs.exe -q --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.VC.ATLMFC --includeRecommended
       - name: get depot tools
