@@ -16,14 +16,12 @@ jobs:
       - name: setup sdk
         run: .\sdk.exe /quiet
       - name: get vs
-        run: curl -o vs.exe "https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030"
+        run: curl -o vs.exe https://aka.ms/vs/17/release/vs_community.exe
       - name: setup vs
-        run: .\vs.exe --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.VC.ATLMFC --includeRecommended
+        run: .\vs.exe -q --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.VC.ATLMFC --includeRecommended
       - name: get depot tools
-        run: git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git %userprofile%\depot
-      - name: update path
-        run: set PATH=%PATH%;%userprofile%\depot
+        run: git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git depot
       - name: depot export dir
-        run: cd %userprofile%\depot
+        run: cd depot
       - name: export 
         run: python package_from_installed.py 2022 -w 10.0.22000.0
